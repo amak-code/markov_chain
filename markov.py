@@ -10,10 +10,12 @@ def open_and_read_file(file_path):
     the file's contents as one string of text.
     """
 
-    # your code goes here
+    contents = open(file_path).read()
+    words = contents.split()
 
-    return 'Contents of your file as one long string'
+    return words
 
+#print(open_and_read_file("green-eggs.txt"))
 
 def make_chains(text_string):
     """Take input text as string; return dictionary of Markov chains.
@@ -38,14 +40,25 @@ def make_chains(text_string):
 
         >>> chains[('there','juanita')]
         [None]
+        
     """
-
     chains = {}
+    
+    for i in range(len(text_string) - 3):
+        #6 elements len(string) = 6 - 3
+        #0-5 indices
+        #3 index is the last one 
+        key = (text_string[i], text_string[i + 1])
+        current_value = (text_string[i + 2])
 
-    # your code goes here
-
+        if key not in chains:
+            chains[key] = [current_value]
+        else:
+            
+            chains[key].append(current_value)
+            
     return chains
-
+print(make_chains(['Would', 'you', 'could', 'you', 'in', 'a', 'house?', 'Would', 'you', 'could', 'you', 'with', 'a', 'mouse?', 'Would', 'you', 'could', 'you', 'in', 'a', 'box?', 'Would', 'you', 'could', 'you', 'with', 'a', 'fox?', 'Would', 'you', 'like', 'green', 'eggs', 'and', 'ham?', 'Would', 'you', 'like', 'them,', 'Sam', 'I', 'am?']))
 
 def make_text(chains):
     """Return text from chains."""
