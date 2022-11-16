@@ -58,17 +58,37 @@ def make_chains(text_string):
             chains[key].append(current_value)
             
     return chains
-print(make_chains(['Would', 'you', 'could', 'you', 'in', 'a', 'house?', 'Would', 'you', 'could', 'you', 'with', 'a', 'mouse?', 'Would', 'you', 'could', 'you', 'in', 'a', 'box?', 'Would', 'you', 'could', 'you', 'with', 'a', 'fox?', 'Would', 'you', 'like', 'green', 'eggs', 'and', 'ham?', 'Would', 'you', 'like', 'them,', 'Sam', 'I', 'am?']))
+#print(make_chains(open_and_read_file("green-eggs.txt")))
+
 
 def make_text(chains):
     """Return text from chains."""
 
     words = []
 
-    # your code goes here
+    list_of_keys = list(chains.keys())
+    
+    random_key = choice(list_of_keys)
+    words.append(random_key[0])
+    words.append(random_key[1])
+    random_value = choice(chains[random_key])
+    words.append(random_value)
+    
+    while True:
+        key = tuple(words[-2:])
+       
+        if key in chains:
+            value = chains[key]
+            random_value = choice(value)
+            words.append(random_value)
+        else:
+            break
+       
+        #key = (key[1], random_value)
 
     return ' '.join(words)
-
+chains = make_chains(open_and_read_file("green-eggs.txt"))
+print(make_text(chains))
 
 input_path = 'green-eggs.txt'
 
