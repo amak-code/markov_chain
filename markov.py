@@ -90,7 +90,7 @@ def make_text(chains):
 #chains = make_chains(open_and_read_file("green-eggs.txt"))
 #print(make_text(chains))
 
-input_path = 'gettysburg.txt'
+input_path = 'green-eggs.txt'
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
