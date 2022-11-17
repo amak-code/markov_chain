@@ -45,9 +45,7 @@ def make_chains(text_string):
     chains = {}
     
     for i in range(len(text_string) - 3):
-        #6 elements len(string) = 6 - 3
-        #0-5 indices
-        #3 index is the last one 
+    
         key = (text_string[i], text_string[i + 1])
         current_value = (text_string[i + 2])
 
@@ -58,7 +56,8 @@ def make_chains(text_string):
             chains[key].append(current_value)
             
     return chains
-#print(make_chains(open_and_read_file("green-eggs.txt")))
+#print(make_chains(open_and_read_file("green-eggs.txt"))) 
+
 
 
 def make_text(chains):
@@ -84,7 +83,7 @@ def make_text(chains):
         else:
             break
        
-        #key = (key[1], random_value)
+       
 
     return ' '.join(words)
 #chains = make_chains(open_and_read_file("green-eggs.txt"))
